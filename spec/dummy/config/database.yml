@@ -44,6 +44,7 @@ defaults: &defaults
   timeout: 5000
   host: localhost
   <<: *<%= ENV['DB'] || "postgresql" %>
+  url: <%= ENV["DATABASE_URL"] %>
 
 development:
   <<: *defaults
