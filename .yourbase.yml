@@ -5,6 +5,7 @@ build_targets:
   container:
     image: yourbase/yb_ubuntu:16.04
   environment:
+  - DB=postgresql
   - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
   - PGUSER=ci
   - PGPASSWORD=ci
@@ -29,6 +30,7 @@ build_targets:
   container:
     image: yourbase/yb_ubuntu:16.04
   environment:
+  - DB=postgresql
   - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
   - PGUSER=ci
   - PGPASSWORD=ci
@@ -53,6 +55,7 @@ build_targets:
   container:
     image: yourbase/yb_ubuntu:16.04
   environment:
+  - DB=postgresql
   - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
   - PGUSER=ci
   - PGPASSWORD=ci
@@ -77,6 +80,7 @@ build_targets:
   container:
     image: yourbase/yb_ubuntu:16.04
   environment:
+  - DB=postgresql
   - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
   - PGUSER=ci
   - PGPASSWORD=ci
