@@ -28,4 +28,4 @@ chmod +x ./cc-test-reporter
 cat Gemfile.lock
 # script
 bundle exec rubocop
-bundle exec rake --trace db:setup db:migrate spec
+bundle exec rake --trace db:setup db:migrate
