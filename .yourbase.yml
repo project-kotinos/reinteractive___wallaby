@@ -43,7 +43,7 @@ build_targets:
     image: yourbase/yb_ubuntu:16.04
   environment:
   - DB=postgresql
-  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
+  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.1
   - PGUSER=ci
   - PGPASSWORD=ci
   - PGHOST={{ .Containers.IP "db" }}
@@ -68,7 +68,7 @@ build_targets:
     image: yourbase/yb_ubuntu:16.04
   environment:
   - DB=postgresql
-  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
+  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.2
   - PGUSER=ci
   - PGPASSWORD=ci
   - PGHOST={{ .Containers.IP "db" }}
@@ -93,7 +93,7 @@ build_targets:
     image: yourbase/yb_ubuntu:16.04
   environment:
   - DB=postgresql
-  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
+  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.2-legacy
   - PGUSER=ci
   - PGPASSWORD=ci
   - PGHOST={{ .Containers.IP "db" }}
