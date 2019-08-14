@@ -12,6 +12,8 @@ build_targets:
   - PGHOST={{ .Containers.IP "db" }}
   - ENCRYPTION_KEY=abcdefghijklmn
   - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
+  - MYSQL_HOST={{ .Containers.IP "mysql" }}
+  - MYSQL_URL=mysql2://root:root@{{ .Containers.IP "mysql" }}:3306/db
   dependencies:
         containers:
           db:
@@ -22,6 +24,16 @@ build_targets:
               - POSTGRES_DB=travis_ci_test
             port_check:
               port: 5432
+              timeout: 45
+          mysql:
+            image: mysql:latest
+            environment:
+              - MYSQL_ROOT_PASSWORD=root
+              - MYSQL_DATABASE=db
+              - MYSQL_USER=db
+              - MYSQL_PASSWORD=db
+            port_check:
+              port: 3306
               timeout: 45
   name: 2.6.0_Gemfile.rails-5.0
 - commands:
