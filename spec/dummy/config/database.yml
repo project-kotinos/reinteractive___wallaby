@@ -33,6 +33,7 @@ mysql: &mysql
   username: root
   password:
   database: <%= Rails.root.basename.to_s %>_<%= Rails.env %>
+  url: <%= ENV["MYSQL_URL"] %>
 
 postgresql: &postgresql
   adapter: postgresql
