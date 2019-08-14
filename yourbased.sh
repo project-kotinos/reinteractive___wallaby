@@ -20,12 +20,12 @@ bundle install --jobs=3 --retry=3
 # before_script
 #mysql -e 'CREATE DATABASE dummy_test;' -uroot
 #psql -c 'CREATE DATABASE dummy_test;' -U postgres
-RAILS_ENV=test bundle exec rake db:drop
-RAILS_ENV=test bundle exec rake db:create
+bundle exec rake db:drop
+bundle exec rake db:create
 curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 chmod +x ./cc-test-reporter
 ./cc-test-reporter before-build
 cat Gemfile.lock
 # script
 bundle exec rubocop
-RAILS_ENV=test bundle exec rake --trace db:setup db:migrate spec
+bundle exec rake --trace db:setup db:migrate spec
