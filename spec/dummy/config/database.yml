@@ -31,7 +31,7 @@ sqlite: &sqlite
 mysql: &mysql
   adapter: mysql2
   username: root
-  password:
+  password: root
   database: <%= Rails.root.basename.to_s %>_<%= Rails.env %>
   url: <%= ENV["MYSQL_URL"] %>
 
