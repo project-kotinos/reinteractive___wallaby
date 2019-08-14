@@ -26,7 +26,7 @@ build_targets:
               port: 5432
               timeout: 45
           mysql:
-            image: mysql:latest
+            image: mysql/mysql-server:5.7
             environment:
               - MYSQL_ROOT_PASSWORD=root
               - MYSQL_DATABASE=db
