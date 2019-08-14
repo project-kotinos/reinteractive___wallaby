@@ -36,91 +36,91 @@ build_targets:
               port: 3306
               timeout: 45
   name: 2.6.0_Gemfile.rails-5.0
-- commands:
-  - chmod +x yourbased.sh
-  - sh ./yourbased.sh
-  container:
-    image: yourbase/yb_ubuntu:16.04
-  environment:
-  - DB=postgresql
-  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.1
-  - PGUSER=ci
-  - PGPASSWORD=ci
-  - PGHOST={{ .Containers.IP "db" }}
-  - ENCRYPTION_KEY=abcdefghijklmn
-  - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
-  dependencies:
-        containers:
-          db:
-            image: postgres:9.4
-            environment:
-              - POSTGRES_PASSWORD=ci
-              - POSTGRES_USER=ci
-              - POSTGRES_DB=travis_ci_test
-            port_check:
-              port: 5432
-              timeout: 45
-  name: 2.6.0_Gemfile.rails-5.1
-- commands:
-  - chmod +x yourbased.sh
-  - sh ./yourbased.sh
-  container:
-    image: yourbase/yb_ubuntu:16.04
-  environment:
-  - DB=postgresql
-  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.2
-  - PGUSER=ci
-  - PGPASSWORD=ci
-  - PGHOST={{ .Containers.IP "db" }}
-  - ENCRYPTION_KEY=abcdefghijklmn
-  - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
-  dependencies:
-        containers:
-          db:
-            image: postgres:9.4
-            environment:
-              - POSTGRES_PASSWORD=ci
-              - POSTGRES_USER=ci
-              - POSTGRES_DB=travis_ci_test
-            port_check:
-              port: 5432
-              timeout: 45
-  name: 2.6.0_Gemfile.rails-5.2
-- commands:
-  - chmod +x yourbased.sh
-  - sh ./yourbased.sh
-  container:
-    image: yourbase/yb_ubuntu:16.04
-  environment:
-  - DB=postgresql
-  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.2-legacy
-  - PGUSER=ci
-  - PGPASSWORD=ci
-  - PGHOST={{ .Containers.IP "db" }}
-  - ENCRYPTION_KEY=abcdefghijklmn
-  - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
-  dependencies:
-        containers:
-          db:
-            image: postgres:9.4
-            environment:
-              - POSTGRES_PASSWORD=ci
-              - POSTGRES_USER=ci
-              - POSTGRES_DB=travis_ci_test
-            port_check:
-              port: 5432
-              timeout: 45
-  name: 2.6.0_Gemfile.rails-5.2-legacy
+# - commands:
+#   - chmod +x yourbased.sh
+#   - sh ./yourbased.sh
+#   container:
+#     image: yourbase/yb_ubuntu:16.04
+#   environment:
+#   - DB=postgresql
+#   - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.1
+#   - PGUSER=ci
+#   - PGPASSWORD=ci
+#   - PGHOST={{ .Containers.IP "db" }}
+#   - ENCRYPTION_KEY=abcdefghijklmn
+#   - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
+#   dependencies:
+#         containers:
+#           db:
+#             image: postgres:9.4
+#             environment:
+#               - POSTGRES_PASSWORD=ci
+#               - POSTGRES_USER=ci
+#               - POSTGRES_DB=travis_ci_test
+#             port_check:
+#               port: 5432
+#               timeout: 45
+#   name: 2.6.0_Gemfile.rails-5.1
+# - commands:
+#   - chmod +x yourbased.sh
+#   - sh ./yourbased.sh
+#   container:
+#     image: yourbase/yb_ubuntu:16.04
+#   environment:
+#   - DB=postgresql
+#   - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.2
+#   - PGUSER=ci
+#   - PGPASSWORD=ci
+#   - PGHOST={{ .Containers.IP "db" }}
+#   - ENCRYPTION_KEY=abcdefghijklmn
+#   - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
+#   dependencies:
+#         containers:
+#           db:
+#             image: postgres:9.4
+#             environment:
+#               - POSTGRES_PASSWORD=ci
+#               - POSTGRES_USER=ci
+#               - POSTGRES_DB=travis_ci_test
+#             port_check:
+#               port: 5432
+#               timeout: 45
+#   name: 2.6.0_Gemfile.rails-5.2
+# - commands:
+#   - chmod +x yourbased.sh
+#   - sh ./yourbased.sh
+#   container:
+#     image: yourbase/yb_ubuntu:16.04
+#   environment:
+#   - DB=postgresql
+#   - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.2-legacy
+#   - PGUSER=ci
+#   - PGPASSWORD=ci
+#   - PGHOST={{ .Containers.IP "db" }}
+#   - ENCRYPTION_KEY=abcdefghijklmn
+#   - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
+#   dependencies:
+#         containers:
+#           db:
+#             image: postgres:9.4
+#             environment:
+#               - POSTGRES_PASSWORD=ci
+#               - POSTGRES_USER=ci
+#               - POSTGRES_DB=travis_ci_test
+#             port_check:
+#               port: 5432
+#               timeout: 45
+#   name: 2.6.0_Gemfile.rails-5.2-legacy
 ci:
   builds:
   - build_target: 2.6.0_Gemfile.rails-5.0
     name: 2.6.0_Gemfile.rails-5.0
-  - build_target: 2.6.0_Gemfile.rails-5.1
-    name: 2.6.0_Gemfile.rails-5.1
-  - build_target: 2.6.0_Gemfile.rails-5.2
-    name: 2.6.0_Gemfile.rails-5.2
-  - build_target: 2.6.0_Gemfile.rails-5.2-legacy
-    name: 2.6.0_Gemfile.rails-5.2-legacy
+#   - build_target: 2.6.0_Gemfile.rails-5.1
+#     name: 2.6.0_Gemfile.rails-5.1
+#   - build_target: 2.6.0_Gemfile.rails-5.2
+#     name: 2.6.0_Gemfile.rails-5.2
+#   - build_target: 2.6.0_Gemfile.rails-5.2-legacy
+#     name: 2.6.0_Gemfile.rails-5.2-legacy
 dependencies:
   build:
   - ruby:2.6.0
