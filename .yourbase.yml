@@ -9,32 +9,32 @@ build_targets:
   - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
   - PGUSER=ci
   - PGPASSWORD=ci
-  - PGHOST={{ .Containers.IP "db" }}
   - ENCRYPTION_KEY=abcdefghijklmn
-  - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
-  - MYSQL_HOST={{ .Containers.IP "mysql" }}
-  - MYSQL_URL=mysql2://root:root@{{ .Containers.IP "mysql" }}:3306/db
-  dependencies:
-        containers:
-          db:
-            image: postgres:9.4
-            environment:
-              - POSTGRES_PASSWORD=ci
-              - POSTGRES_USER=ci
-              - POSTGRES_DB=travis_ci_test
-            port_check:
-              port: 5432
-              timeout: 45
-          mysql:
-            image: mysql/mysql-server:5.7
-            environment:
-              - MYSQL_ROOT_PASSWORD=root
-              - MYSQL_DATABASE=db
-              - MYSQL_USER=root
-              - MYSQL_PASSWORD=root
-            port_check:
-              port: 3306
-              timeout: 45
+#   - PGHOST={{ .Containers.IP "db" }}
+#   - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "db" }}:5432/travis_ci_test
+#   - MYSQL_HOST={{ .Containers.IP "mysql" }}
+#   - MYSQL_URL=mysql2://root:root@{{ .Containers.IP "mysql" }}:3306/db
+#   dependencies:
+#         containers:
+#           db:
+#             image: postgres:9.4
+#             environment:
+#               - POSTGRES_PASSWORD=ci
+#               - POSTGRES_USER=ci
+#               - POSTGRES_DB=travis_ci_test
+#             port_check:
+#               port: 5432
+#               timeout: 45
+#           mysql:
+#             image: mysql/mysql-server:5.7
+#             environment:
+#               - MYSQL_ROOT_PASSWORD=root
+#               - MYSQL_DATABASE=db
+#               - MYSQL_USER=root
+#               - MYSQL_PASSWORD=root
+#             port_check:
+#               port: 3306
+#               timeout: 45
   name: 2.6.0_Gemfile.rails-5.0
 # - commands:
 #   - chmod +x yourbased.sh
