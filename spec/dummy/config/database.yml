@@ -31,9 +31,8 @@ sqlite: &sqlite
 mysql: &mysql
   adapter: mysql2
   username: root
-  password: root
+  password:
   database: <%= Rails.root.basename.to_s %>_<%= Rails.env %>
-  url: <%= ENV["MYSQL_URL"] %>
 
 postgresql: &postgresql
   adapter: postgresql
@@ -45,7 +44,6 @@ defaults: &defaults
   timeout: 5000
   host: localhost
   <<: *<%= ENV['DB'] || "postgresql" %>
-  url: <%= ENV["DATABASE_URL"] %>
 
 development:
   <<: *defaults
