@@ -12,7 +12,7 @@ export RACK_ENV=test
 export MERB_ENV=test
 export JRUBY_OPTS="--server -Dcext.enabled=false -Xcompile.invokedynamic=false"
 
-apt-get update && apt-get install -y tzdata mysql-client postgresql-client
+apt-get update && apt-get install -y tzdata mysql-client postgresql-client libpq-dev libmysqlclient-dev
 
 # gem install bundler -v 2.0.1
 # before_install
