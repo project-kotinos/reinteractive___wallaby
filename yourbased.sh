@@ -11,10 +11,8 @@ export RAILS_ENV=test
 export RACK_ENV=test
 export MERB_ENV=test
 export JRUBY_OPTS="--server -Dcext.enabled=false -Xcompile.invokedynamic=false"
-apt-get update && apt-get install -y tzdata mysql-client mysql-server postgresql
 
-#starting postgresql
-/usr/lib/postgresql/10/bin/pg_ctl -D /var/lib/postgresql/10/main -l logfile start
+apt-get update && apt-get install -y tzdata mysql-client postgresql-client
 
 # gem install bundler -v 2.0.1
 # before_install
@@ -22,13 +20,11 @@ gem install bundler -v '< 2'
 # install
 bundle install --jobs=3 --retry=3
 # before_script
-mysql -e 'CREATE DATABASE dummy_test;' -uroot
-psql -c 'CREATE DATABASE dummy_test;' -U postgres
 # bundle exec rake db:drop
-# bundle exec rake db:create
-curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-chmod +x ./cc-test-reporter
-./cc-test-reporter before-build
+#bundle exec rake db:create
+#curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#chmod +x ./cc-test-reporter
+#./cc-test-reporter before-build
 cat Gemfile.lock
 # script
 bundle exec rubocop
