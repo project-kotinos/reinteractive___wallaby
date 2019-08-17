@@ -36,7 +36,8 @@ build_targets:
         port_check:
           port: 3306
           timeout: 120
-  name: default
+  name: 2.6.0_Gemfile.rails-5.0
+
 ci:
   builds:
   - build_target: 2.6.0_Gemfile.rails-5.0
