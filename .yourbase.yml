@@ -1,7 +1,15 @@
 build_targets:
 - commands:
-  - chmod +x yourbased.sh
-  - sh ./yourbased.sh
+    - apt-get update
+    - apt-get install -y tzdata mysql-client postgresql-client libpq-dev libmysqlclient-dev
+    - gem install bundler -v '< 2'
+    - bundle install --jobs=3 --retry=3
+    - cat Gemfile.lock
+    - bundle exec rubocop
+    - bundle exec rake --trace db:setup 
+    - bundle exec rake --trace db:migrate 
+    - bundle exec rake --trace spec
+
   container:
     image: yourbase/yb_ubuntu:16.04
   environment:
@@ -15,6 +23,17 @@ build_targets:
     #- MYSQL_HOST={{ .Containers.IP "mysql" }}
   - MYSQL_DATABASE_URL=mysql2://ci:ci@{{ .Containers.IP "mysql" }}:3306/dummy_test
   - DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true
+  - DEBIAN_FRONTEND=noninteractive
+  - CI=true
+  - TRAVIS=true
+  - CONTINUOUS_INTEGRATION=true
+  - LANG=en_US.UTF-8
+  - LC_ALL=en_US.UTF-8
+  - RAILS_ENV=test
+  - RACK_ENV=test
+  - MERB_ENV=test
+
+
   dependencies:
     containers:
       postgres:
