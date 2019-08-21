@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+## Inane change
+
 describe Wallaby::Custom::ModelDecorator do
   subject { described_class.new model_class }
   let(:model_class) { Postcode }
