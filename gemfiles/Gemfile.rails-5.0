@@ -30,4 +30,5 @@ group :test do
   gem 'rubocop'
   gem 'simplecov'
   gem 'webmock'
+  gem 'yourbase-rspec-skipper', '0.1.5'
 end

@@ -12,14 +12,14 @@ export RACK_ENV=test
 export MERB_ENV=test
 export JRUBY_OPTS="--server -Dcext.enabled=false -Xcompile.invokedynamic=false"
 
-/skipper -- apt-get update
-/skipper -- apt-get install -y tzdata mysql-client postgresql-client libpq-dev libmysqlclient-dev
+apt-get update
+apt-get install -y tzdata mysql-client postgresql-client libpq-dev libmysqlclient-dev
 
 # gem install bundler -v 2.0.1
 # before_install
-/skipper -- gem install bundler -v '< 2'
+gem install bundler -v '< 2'
 # install
-/skipper -- bundle install --jobs=3 --retry=3
+bundle install --jobs=3 --retry=3
 # before_script
 # bundle exec rake db:drop
 #bundle exec rake db:create
@@ -28,7 +28,7 @@ export JRUBY_OPTS="--server -Dcext.enabled=false -Xcompile.invokedynamic=false"
 #./cc-test-reporter before-build
 cat Gemfile.lock
 # script
-/skipper -- bundle exec rubocop
+bundle exec rubocop
 bundle exec rake --trace db:setup 
 bundle exec rake --trace db:migrate 
-/skipper -- bundle exec rake --trace spec
+bundle exec rake --trace spec

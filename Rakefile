@@ -21,6 +21,8 @@ load 'rails/tasks/statistics.rake'
 Bundler::GemHelper.install_tasks
 
 require 'rspec/core/rake_task'
+require 'yourbase/rspec/skipper'
+YourBase::RSpec::Skipper.init!
 
 RSpec::Core::RakeTask.new :spec
 
