@@ -1,5 +1,5 @@
 module Wallaby
-  # Custom view renderer to provide support for cell rendering
+  # Custom view renderer to provide support for cell rendering!
   class CustomRenderer < ::ActionView::Renderer
     # @return [String] HTML output
     # @see Wallaby::CustomPartialRenderer
