@@ -27,5 +27,5 @@ bundle install --jobs=3 --retry=3
 #./cc-test-reporter before-build
 cat Gemfile.lock
 # script
-bundle exec rubocop
+# bundle exec rubocop
 bundle exec rake --trace db:setup db:migrate spec
