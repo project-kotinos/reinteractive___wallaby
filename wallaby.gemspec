@@ -32,6 +32,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'parslet'
   s.add_dependency 'rails', '>= 4.2.0'
   s.add_dependency 'responders'
+  s.add_dependency 'rspec'
+  s.add_dependency 'yourbase-rspec-skipper'
   s.add_dependency 'sass-rails'
   s.add_dependency 'summernote-rails'
   s.add_dependency 'twitter-typeahead-rails'
