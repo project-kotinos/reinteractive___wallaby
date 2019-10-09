@@ -1,0 +1,67 @@
+build_targets:
+- commands:
+    - apt-get update
+    - apt-get install -y tzdata mysql-client postgresql-client libpq-dev libmysqlclient-dev
+    - gem install bundler -v '< 2'
+    - bundle install --jobs=3 --retry=3
+    - cat Gemfile.lock
+    - bundle exec rake --trace db:setup 
+    - bundle exec rake --trace db:migrate 
+    - bundle exec rake --trace spec
+
+  container:
+    image: yourbase/yb_ubuntu:16.04
+  environment:
+  - DB=postgresql
+  - BUNDLE_GEMFILE=gemfiles/Gemfile.rails-5.0
+  - PGUSER=ci
+  - PGPASSWORD=ci
+  - ENCRYPTION_KEY=abcdefghijklmn
+  - PGHOST={{ .Containers.IP "postgres" }}
+  - DATABASE_URL=postgres://ci:ci@{{ .Containers.IP "postgres" }}:5432/dummy_test
+    #- MYSQL_HOST={{ .Containers.IP "mysql" }}
+  - MYSQL_DATABASE_URL=mysql2://ci:ci@{{ .Containers.IP "mysql" }}:3306/dummy_test
+  - DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=true
+  - DEBIAN_FRONTEND=noninteractive
+  - CI=true
+  - TRAVIS=true
+  - CONTINUOUS_INTEGRATION=true
+  - LANG=en_US.UTF-8
+  - LC_ALL=en_US.UTF-8
+  - RAILS_ENV=test
+  - RACK_ENV=test
+  - MERB_ENV=test
+
+
+  dependencies:
+    containers:
+      postgres:
+        image: postgres:9.4
+        environment:
+          - POSTGRES_PASSWORD=ci
+          - POSTGRES_USER=ci
+          - POSTGRES_DB=dummy_test
+        port_check:
+          port: 5432
+          timeout: 45
+      mysql:
+        image: mysql/mysql-server:5.7
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_DATABASE=dummy_test
+          - MYSQL_USER=ci
+          - MYSQL_PASSWORD=ci
+        port_check:
+          port: 3306
+          timeout: 120
+  name: 2.6.0_Gemfile.rails-5.0
+
+ci:
+  builds:
+  - build_target: 2.6.0_Gemfile.rails-5.0
+    name: 2.6.0_Gemfile.rails-5.0
+
+dependencies:
+  build:
+  - ruby:2.6.0
+  - node:10.15.1
